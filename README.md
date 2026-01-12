@@ -1,521 +1,335 @@
-# 🎓 LectureAI - Your Personal AI Teaching Assistant for Lecture Slides
+# Your Personal AI Teaching Assistant for Lecture Slides
 
-<div align="center">
+A comprehensive Streamlit-based Retrieval-Augmented Generation (RAG) system designed to enhance learning experiences by providing intelligent Q&A capabilities for lecture materials.
 
-![LectureAI Logo](https://img.shields.io/badge/LectureAI-AI%20Teaching%20Assistant-blue?style=for-the-badge)
-![Python](https://img.shields.io/badge/Python-3.8+-blue?style=flat-square&logo=python)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
-![Status](https://img.shields.io/badge/Status-Active%20Development-yellow?style=flat-square)
+## 🎯 Overview
 
-**Transform your lecture slides into an interactive learning experience with AI-powered assistance**
+This application leverages advanced AI technologies to create an interactive learning platform that allows students to:
+- Upload and process lecture slide PDFs
+- Ask questions about lecture content
+- Receive accurate, contextual answers powered by RAG and large language models
+- Maintain conversation history for better learning continuity
+- Access citations and references for verified answers
 
-[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Documentation](#-documentation) • [Contributing](#-contributing)
+## ✨ Key Features
 
-</div>
+### 📚 Document Management
+- **PDF Upload & Processing**: Upload multiple lecture slide PDFs for comprehensive coverage
+- **Automatic Indexing**: Documents are automatically processed and indexed for fast retrieval
+- **Multiple File Support**: Handle various lecture formats and sources simultaneously
 
----
+### 🤖 Intelligent Q&A System
+- **RAG Technology**: Combines document retrieval with generative AI for contextually relevant answers
+- **Smart Context Window**: Retrieves the most relevant document sections for each query
+- **Citation Support**: Provides references to source material for answer verification
+- **Conversation Memory**: Maintains chat history for contextual follow-up questions
 
-## 📋 Overview
+### 🎨 User Interface
+- **Clean, Intuitive Design**: Built with Streamlit for a smooth user experience
+- **Real-time Processing**: Instant feedback and response generation
+- **Chat Interface**: Natural conversation flow with message history
+- **Document Visualization**: Preview and manage uploaded documents
 
-LectureAI is an intelligent AI-powered teaching assistant designed to enhance your learning experience with lecture slides. It analyzes presentation content, generates comprehensive study materials, answers questions, and provides personalized learning insights.
+### 🔐 Safety & Reliability
+- **Error Handling**: Robust error management for graceful failure recovery
+- **Rate Limiting**: Prevents system overload and ensures fair resource usage
+- **Input Validation**: Sanitizes all user inputs for security
+- **Caching**: Optimized performance through intelligent caching mechanisms
 
-Whether you're a student looking to master complex topics or an educator seeking to create more engaging learning materials, LectureAI bridges the gap between passive slide viewing and active learning.
+## 🛠️ Technology Stack
 
----
+### Backend & Core Libraries
+- **Streamlit**: Modern web application framework for rapid development
+- **LangChain**: Orchestration framework for LLM applications
+- **PyPDF2/pdfplumber**: PDF parsing and text extraction
+- **FAISS/Chroma**: Vector database for efficient document retrieval
+- **OpenAI API**: LLM backbone for answer generation (configurable)
 
-## ✨ Features
+### Data Processing
+- **NumPy**: Numerical operations and vector manipulation
+- **Pandas**: Data manipulation and analysis
+- **Python-dotenv**: Environment configuration management
 
-### 🤖 AI-Powered Analysis
-- **Intelligent Slide Parsing**: Automatically extracts key concepts, definitions, and important points from lecture slides
-- **Content Understanding**: Uses advanced NLP to comprehend and contextualize lecture material
-- **Concept Mapping**: Identifies relationships between different topics and concepts
+### Additional Tools
+- **Streamlit Session State**: For managing application state
+- **Python Logging**: Comprehensive logging for debugging
+- **JSON**: Configuration and data interchange
 
-### 📚 Learning Materials Generation
-- **Study Guides**: Automatically generates comprehensive study guides from slide content
-- **Quiz Generation**: Creates practice questions with multiple choice, short answer, and essay formats
-- **Summary Notes**: Produces concise summaries of each lecture section
-- **Key Terms & Definitions**: Extracts and organizes important terminology
+## 📋 Requirements
 
-### 💬 Interactive Q&A
-- **Question Answering**: Ask questions about lecture content and receive detailed, contextual answers
-- **Clarification Support**: Get explanations for complex concepts in simple terms
-- **Deep Dives**: Request in-depth exploration of specific topics from your slides
-- **Real-time Assistance**: Get instant answers during study sessions
+```
+python >= 3.8
+streamlit >= 1.28.0
+langchain >= 0.1.0
+openai >= 1.0.0
+faiss-cpu >= 1.7.4
+pdfplumber >= 0.10.0
+python-dotenv >= 1.0.0
+numpy >= 1.24.0
+pandas >= 1.5.0
+requests >= 2.31.0
+```
 
-### 📊 Learning Analytics
-- **Progress Tracking**: Monitor your learning progress across different topics
-- **Weak Area Identification**: Get insights on concepts that need more attention
-- **Personalized Recommendations**: Receive tailored learning paths based on your needs
-- **Performance Reports**: Visual dashboards showing your mastery of different topics
+## 🚀 Installation
 
-### 🎯 Personalization
-- **Learning Style Adaptation**: Adjusts explanations based on your learning preferences
-- **Difficulty Levels**: Content can be adjusted from beginner to advanced
-- **Custom Focus Areas**: Concentrate on specific topics relevant to your needs
-- **Progress-Based Feedback**: Adaptive feedback that evolves with your learning
-
-### 📁 Multi-Format Support
-- **PowerPoint Presentations** (.pptx, .ppt)
-- **PDF Slides** (.pdf)
-- **Google Slides** (via integration)
-- **Image-based Slides** (.png, .jpg, .jpeg)
-
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Python 3.8 or higher
-- pip (Python package manager)
-- OpenAI API key (for AI features)
-
-### Installation
-
-1. **Clone the Repository**
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/AhmedYaSSerUNKN/Your-Personal-AI-Teaching-Assistant-for-Lecture-Slides.git
 cd Your-Personal-AI-Teaching-Assistant-for-Lecture-Slides
 ```
 
-2. **Create Virtual Environment**
+### 2. Create Virtual Environment
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-3. **Install Dependencies**
+### 3. Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-4. **Configure API Keys**
+### 4. Configure Environment Variables
+Create a `.env` file in the root directory:
+```env
+OPENAI_API_KEY=your_openai_api_key_here
+STREAMLIT_SERVER_PORT=8501
+STREAMLIT_SERVER_HEADLESS=true
+```
+
+### 5. Run the Application
 ```bash
-# Create a .env file in the project root
-echo "OPENAI_API_KEY=your_api_key_here" > .env
+streamlit run app.py
 ```
 
-5. **Run the Application**
-```bash
-python main.py
+The application will be available at `http://localhost:8501`
+
+## 💡 Usage Guide
+
+### Getting Started
+1. **Launch the Application**: Run the Streamlit server
+2. **Upload Documents**: Use the sidebar to upload your lecture PDF files
+3. **Wait for Processing**: The system will process and index your documents
+4. **Start Asking**: Enter your questions in the chat interface
+
+### Best Practices
+- **Clear Questions**: Ask specific, well-formulated questions for better results
+- **Context Matters**: Provide context if asking follow-up questions
+- **Verify Answers**: Check citations provided with answers
+- **Iterative Learning**: Use follow-up questions to deepen understanding
+- **Session Management**: Clear chat history when switching between different lecture topics
+
+### Example Interactions
+```
+User: "What is the main topic covered in slide 5?"
+Assistant: [Retrieves relevant content and provides comprehensive answer with citations]
+
+User: "Can you explain this concept in simpler terms?"
+Assistant: [Provides simplified explanation using conversation context]
+
+User: "What are the key takeaways from today's lecture?"
+Assistant: [Summarizes main points from uploaded documents]
 ```
 
----
-
-## 📖 Usage
-
-### Basic Usage
-
-#### 1. Load Your Lecture Slides
-```python
-from lectureai import LectureAI
-
-# Initialize the AI assistant
-assistant = LectureAI(api_key="your_openai_api_key")
-
-# Load presentation
-presentation = assistant.load_slides("path/to/your/lecture.pptx")
-```
-
-#### 2. Generate Study Materials
-```python
-# Generate study guide
-study_guide = presentation.generate_study_guide()
-print(study_guide)
-
-# Generate quiz
-quiz = presentation.generate_quiz(num_questions=10)
-print(quiz)
-
-# Get summary
-summary = presentation.get_summary()
-print(summary)
-```
-
-#### 3. Ask Questions
-```python
-# Ask a question about the lecture
-question = "What is the main concept discussed in slide 3?"
-answer = presentation.ask_question(question)
-print(answer)
-
-# Get clarification
-clarification = presentation.clarify_concept("Newton's Laws of Motion")
-print(clarification)
-```
-
-#### 4. Track Progress
-```python
-# Get learning analytics
-analytics = presentation.get_analytics()
-print(f"Topics Covered: {analytics['topics']}")
-print(f"Estimated Study Time: {analytics['study_time']}")
-print(f"Difficulty Level: {analytics['difficulty']}")
-```
-
-### Advanced Usage
-
-#### Custom Configuration
-```python
-config = {
-    'model': 'gpt-4',
-    'language': 'en',
-    'difficulty_level': 'advanced',
-    'learning_style': 'visual'
-}
-
-assistant = LectureAI(
-    api_key="your_openai_api_key",
-    config=config
-)
-```
-
-#### Batch Processing
-```python
-# Process multiple presentations
-presentations = [
-    "lecture1.pptx",
-    "lecture2.pptx",
-    "lecture3.pptx"
-]
-
-for lecture_file in presentations:
-    presentation = assistant.load_slides(lecture_file)
-    study_guide = presentation.generate_study_guide()
-    quiz = presentation.generate_quiz()
-    # Process results...
-```
-
-#### Export Materials
-```python
-# Export to different formats
-presentation.export_study_guide("output/study_guide.pdf")
-presentation.export_quiz("output/quiz.docx")
-presentation.export_notes("output/notes.md")
-```
-
----
-
-## 📚 Documentation
-
-### API Reference
-
-#### LectureAI Class
-```
-LectureAI(api_key, config=None)
-  ├── load_slides(file_path)
-  ├── get_status()
-  └── set_config(config_dict)
-```
-
-#### Presentation Object
-```
-Presentation
-  ├── generate_study_guide()
-  ├── generate_quiz(num_questions, question_types)
-  ├── get_summary()
-  ├── ask_question(question)
-  ├── clarify_concept(concept_name)
-  ├── get_analytics()
-  ├── export_study_guide(output_path)
-  ├── export_quiz(output_path)
-  └── export_notes(output_path)
-```
-
-### Configuration Options
-
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `model` | string | gpt-3.5-turbo | AI model to use (gpt-3.5-turbo, gpt-4) |
-| `language` | string | en | Language for content generation |
-| `difficulty_level` | string | intermediate | Content difficulty (beginner, intermediate, advanced) |
-| `learning_style` | string | balanced | Learning style preference (visual, textual, auditory, kinesthetic) |
-| `max_tokens` | integer | 2000 | Maximum tokens for responses |
-| `temperature` | float | 0.7 | Creativity level of responses (0.0-1.0) |
-
-### Supported Question Types
-- Multiple Choice
-- Short Answer
-- Essay
-- True/False
-- Fill in the Blank
-- Matching
-
----
-
-## 🛠️ Project Structure
+## 📁 Project Structure
 
 ```
 Your-Personal-AI-Teaching-Assistant-for-Lecture-Slides/
-├── README.md                 # Project documentation
-├── requirements.txt          # Python dependencies
-├── .env.example             # Environment variables template
-├── main.py                  # Entry point
-│
-├── lectureai/               # Main package
+├── app.py                      # Main Streamlit application
+├── requirements.txt            # Python dependencies
+├── .env.example               # Example environment configuration
+├── .gitignore                 # Git ignore rules
+├── README.md                  # This file
+├── config/
+│   └── settings.py           # Configuration settings
+├── src/
 │   ├── __init__.py
-│   ├── core.py             # Core LectureAI class
-│   ├── presentation.py     # Presentation handling
-│   ├── analyzer.py         # Content analysis
-│   ├── generator.py        # Material generation
-│   └── utils.py            # Utility functions
-│
-├── tests/                  # Unit tests
-│   ├── test_core.py
-│   ├── test_analyzer.py
-│   └── test_generator.py
-│
-├── examples/               # Example scripts
-│   ├── basic_usage.py
-│   ├── advanced_usage.py
-│   └── batch_processing.py
-│
-└── docs/                   # Additional documentation
-    ├── API.md
-    ├── TUTORIAL.md
-    └── TROUBLESHOOTING.md
+│   ├── document_processor.py  # PDF processing and indexing
+│   ├── rag_engine.py          # RAG implementation
+│   ├── llm_interface.py       # LLM integration
+│   └── utils.py               # Utility functions
+├── data/
+│   ├── uploads/               # Uploaded lecture files
+│   ├── vectors/               # Vector database storage
+│   └── cache/                 # Cached data
+└── logs/
+    └── app.log               # Application logs
 ```
-
----
 
 ## 🔧 Configuration
 
+### Main Settings (config/settings.py)
+```python
+# LLM Configuration
+LLM_MODEL = "gpt-3.5-turbo"  # or "gpt-4" for better results
+TEMPERATURE = 0.7
+MAX_TOKENS = 1024
+TOP_K_DOCUMENTS = 5  # Number of relevant documents to retrieve
+
+# Document Processing
+CHUNK_SIZE = 500
+CHUNK_OVERLAP = 100
+MAX_FILE_SIZE = 50  # MB
+
+# UI Settings
+MAX_CONVERSATION_HISTORY = 20
+SIDEBAR_WIDTH = 300
+```
+
 ### Environment Variables
+- `OPENAI_API_KEY`: Your OpenAI API key
+- `STREAMLIT_SERVER_PORT`: Server port (default: 8501)
+- `LOG_LEVEL`: Logging level (DEBUG, INFO, WARNING, ERROR)
 
-Create a `.env` file in the project root:
+## 📊 How RAG Works
 
-```env
-# OpenAI API Configuration
-OPENAI_API_KEY=your_api_key_here
-OPENAI_API_ENDPOINT=https://api.openai.com/v1
-
-# Application Settings
-APP_LOG_LEVEL=INFO
-MAX_FILE_SIZE=100MB
-TEMP_DIR=./temp
-
-# Feature Flags
-ENABLE_CACHING=true
-ENABLE_ANALYTICS=true
-ENABLE_EXPORT=true
-```
-
----
-
-## 💡 Examples
-
-### Example 1: Create Study Materials from Lecture
-```python
-from lectureai import LectureAI
-
-assistant = LectureAI(api_key="sk-...")
-presentation = assistant.load_slides("biology_lecture.pptx")
-
-# Generate comprehensive study materials
-study_guide = presentation.generate_study_guide()
-quiz = presentation.generate_quiz(num_questions=15)
-summary = presentation.get_summary()
-
-print("Study Guide Generated!")
-print("Quiz Created with 15 Questions!")
-print("Summary Ready for Review!")
-```
-
-### Example 2: Interactive Learning Session
-```python
-presentation = assistant.load_slides("chemistry_lecture.pptx")
-
-questions = [
-    "What are the main types of chemical reactions?",
-    "Can you explain the law of conservation of mass?",
-    "What is the difference between exothermic and endothermic reactions?"
-]
-
-for question in questions:
-    answer = presentation.ask_question(question)
-    print(f"Q: {question}")
-    print(f"A: {answer}\n")
-```
-
-### Example 3: Progress Monitoring
-```python
-presentation = assistant.load_slides("physics_lecture.pptx")
-
-analytics = presentation.get_analytics()
-print(f"Topics Covered: {', '.join(analytics['topics'])}")
-print(f"Difficulty Level: {analytics['difficulty']}")
-print(f"Estimated Study Time: {analytics['study_time']} minutes")
-print(f"Key Concepts: {len(analytics['key_concepts'])} identified")
-```
-
----
+1. **Document Ingestion**: PDFs are uploaded and parsed into text chunks
+2. **Embedding Creation**: Text chunks are converted to vector embeddings
+3. **Vector Storage**: Embeddings are stored in FAISS/Chroma vector database
+4. **Query Processing**: User questions are converted to embeddings
+5. **Similarity Search**: Most similar document chunks are retrieved
+6. **Context Augmentation**: Retrieved chunks augment the LLM prompt
+7. **Answer Generation**: LLM generates answers based on context
+8. **Response Delivery**: Answer with citations is returned to user
 
 ## 🧪 Testing
 
-Run the test suite:
-
+### Running Tests
 ```bash
-# Run all tests
-pytest
-
-# Run with coverage
-pytest --cov=lectureai
-
-# Run specific test file
-pytest tests/test_core.py -v
+pytest tests/ -v
 ```
 
----
-
-## 📋 Requirements
-
-```
-openai>=0.27.0
-python-pptx>=0.6.21
-pdf2image>=1.16.0
-PyPDF2>=3.0.0
-python-dotenv>=0.19.0
-requests>=2.28.0
-numpy>=1.21.0
-pandas>=1.3.0
-```
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! Please follow these steps:
-
-1. **Fork the Repository**
+### Test Coverage
 ```bash
-git clone https://github.com/AhmedYaSSerUNKN/Your-Personal-AI-Teaching-Assistant-for-Lecture-Slides.git
+pytest tests/ --cov=src --cov-report=html
 ```
-
-2. **Create a Feature Branch**
-```bash
-git checkout -b feature/your-feature-name
-```
-
-3. **Make Your Changes**
-- Write clean, documented code
-- Add tests for new features
-- Update documentation as needed
-
-4. **Commit Your Changes**
-```bash
-git commit -m "Add description of your changes"
-```
-
-5. **Push to Your Fork**
-```bash
-git push origin feature/your-feature-name
-```
-
-6. **Create a Pull Request**
-- Provide clear description of changes
-- Reference any related issues
-
-### Contribution Guidelines
-- Follow PEP 8 style guide
-- Add docstrings to all functions
-- Write tests for new features
-- Keep commits atomic and meaningful
-- Update CHANGELOG.md
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
 
 ## 🐛 Troubleshooting
 
 ### Common Issues
 
-**Issue: API Key Not Found**
-```bash
-# Solution: Ensure .env file exists with OPENAI_API_KEY set
-echo "OPENAI_API_KEY=your_key_here" > .env
+**Issue: "API Key not found"**
+- Solution: Ensure `.env` file exists with `OPENAI_API_KEY` set correctly
+
+**Issue: "PDF processing fails"**
+- Solution: Verify PDF is not corrupted; check file size doesn't exceed limits
+
+**Issue: "Slow response time"**
+- Solution: Reduce chunk size in settings; consider using GPT-4 or optimizing embeddings
+
+**Issue: "Out of memory"**
+- Solution: Reduce number of documents loaded; use `faiss-cpu` with index optimization
+
+### Debugging
+Enable debug logging by setting in `.env`:
+```env
+LOG_LEVEL=DEBUG
 ```
 
-**Issue: PDF Processing Error**
-```bash
-# Solution: Install required system dependencies
-# Ubuntu/Debian:
-sudo apt-get install libpoppler-cpp-dev
+Check logs in `logs/app.log` for detailed error information.
 
-# macOS:
-brew install poppler
-```
+## 📈 Performance Optimization
 
-**Issue: Slow Response Times**
-```python
-# Solution: Use caching and optimize configuration
-config = {
-    'enable_caching': True,
-    'cache_ttl': 3600,
-    'batch_size': 5
-}
-```
+### Vector Database Optimization
+- Use FAISS for large document collections
+- Implement index quantization for memory efficiency
+- Regular index rebuilding for consistency
 
-For more troubleshooting tips, see [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)
+### LLM Optimization
+- Implement prompt caching for repeated queries
+- Use batch processing for multiple questions
+- Adjust temperature based on query complexity
 
----
+### UI Optimization
+- Enable Streamlit caching with `@st.cache_data`
+- Implement lazy loading for large document lists
+- Use session state management efficiently
 
-## 🚀 Roadmap
+## 🔒 Security Considerations
 
-### Current Version (v1.0)
-- ✅ Basic slide parsing
-- ✅ Study guide generation
-- ✅ Q&A functionality
-- ✅ Quiz creation
+- **API Key Management**: Never commit API keys; use `.env` files
+- **File Upload Security**: Implement file type validation and size limits
+- **Input Sanitization**: Sanitize all user inputs to prevent injection attacks
+- **Error Messages**: Avoid exposing sensitive system information in errors
+- **Access Control**: Implement authentication for production deployments
 
-### Upcoming (v1.1)
-- 🔄 Google Slides integration
-- 🔄 Audio/Video lecture support
-- 🔄 Collaborative learning features
-- 🔄 Mobile app
+## 📝 Contributing
 
-### Future (v2.0)
-- 📋 Real-time collaboration
-- 📋 Custom AI model training
-- 📋 Advanced analytics dashboard
-- 📋 Integration with LMS platforms
+We welcome contributions to enhance this teaching assistant! Here's how:
 
----
+1. **Fork the Repository**: Create your own copy
+2. **Create a Feature Branch**: `git checkout -b feature/YourFeature`
+3. **Make Changes**: Implement your improvements
+4. **Commit Changes**: `git commit -m 'Add YourFeature'`
+5. **Push to Branch**: `git push origin feature/YourFeature`
+6. **Open Pull Request**: Submit your changes for review
+
+### Contribution Guidelines
+- Follow PEP 8 style guidelines
+- Add tests for new features
+- Update documentation accordingly
+- Ensure all tests pass before submitting PR
+
+## 📄 License
+
+This project is licensed under the MIT License - see LICENSE file for details.
+
+## 👨‍💼 Author
+
+**Ahmed Yasser**
+- GitHub: [@AhmedYaSSerUNKN](https://github.com/AhmedYaSSerUNKN)
+- Contact: Open an issue for support or questions
+
+## 🙏 Acknowledgments
+
+- OpenAI for GPT models and API
+- LangChain community for RAG framework
+- Streamlit team for the amazing framework
+- All contributors and users who help improve this project
+
+## 📚 Additional Resources
+
+### Documentation
+- [Streamlit Documentation](https://docs.streamlit.io/)
+- [LangChain Documentation](https://python.langchain.com/)
+- [OpenAI API Reference](https://platform.openai.com/docs/)
+- [FAISS Documentation](https://github.com/facebookresearch/faiss)
+
+### Related Articles
+- [RAG (Retrieval-Augmented Generation) Explained](https://docs.langchain.com/docs/modules/chains/index_related_chains/retrieval_qa)
+- [Vector Databases and Embeddings](https://towardsdatascience.com/vector-databases-for-llm-models-7ff3b92277f8)
+
+## 🚦 Roadmap
+
+### Upcoming Features
+- [ ] Multi-language support
+- [ ] Advanced search filters
+- [ ] Answer quality metrics
+- [ ] Export conversation history
+- [ ] Dark mode UI
+- [ ] User authentication system
+- [ ] Cloud deployment templates
+- [ ] Mobile application
+- [ ] Voice Q&A capability
+- [ ] Integration with learning management systems (LMS)
+
+### Future Enhancements
+- Support for additional document formats (DOCX, PPTX, images)
+- Real-time collaborative learning sessions
+- Personalized learning analytics
+- Advanced caching mechanisms
+- Support for multiple LLM providers
+- Fine-tuned models for domain-specific content
 
 ## 📞 Support & Contact
 
-- **Issues & Bugs**: [GitHub Issues](https://github.com/AhmedYaSSerUNKN/Your-Personal-AI-Teaching-Assistant-for-Lecture-Slides/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/AhmedYaSSerUNKN/Your-Personal-AI-Teaching-Assistant-for-Lecture-Slides/discussions)
-- **Email**: [contact information]
-- **Documentation**: [See docs/ folder](docs/)
+For issues, questions, or suggestions:
+- Open an issue on GitHub
+- Check existing issues for solutions
+- Review troubleshooting section above
 
 ---
 
-## 📊 Project Statistics
+**Last Updated**: 2026-01-12
 
-![Stars](https://img.shields.io/github/stars/AhmedYaSSerUNKN/Your-Personal-AI-Teaching-Assistant-for-Lecture-Slides?style=social)
-![Forks](https://img.shields.io/github/forks/AhmedYaSSerUNKN/Your-Personal-AI-Teaching-Assistant-for-Lecture-Slides?style=social)
-![Issues](https://img.shields.io/github/issues/AhmedYaSSerUNKN/Your-Personal-AI-Teaching-Assistant-for-Lecture-Slides)
-![Last Updated](https://img.shields.io/github/last-commit/AhmedYaSSerUNKN/Your-Personal-AI-Teaching-Assistant-for-Lecture-Slides)
-
----
-
-## 🎉 Acknowledgments
-
-Special thanks to:
-- The OpenAI team for providing powerful AI models
-- All contributors who have helped improve this project
-- The open-source community for amazing libraries and tools
-
----
-
-<div align="center">
-
-**Made with ❤️ by [AhmedYaSSerUNKN](https://github.com/AhmedYaSSerUNKN)**
-
-[⬆ back to top](#-lectureai---your-personal-ai-teaching-assistant-for-lecture-slides)
-
-</div>
+**Status**: Active Development ✅
